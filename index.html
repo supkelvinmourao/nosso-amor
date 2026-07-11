@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz 2 Anos - Kelvin & Natiely</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --cor-fundo: #faf5f5;
+            --cor-carta: #ffffff;
+            --cor-titulo: #a72a44;
+            --cor-texto: #4a3b3b;
+            --cor-borda: #e8d0d0;
+            --cor-sombra: rgba(167, 42, 68, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background-color: var(--cor-fundo);
+            background-image: radial-gradient(var(--cor-borda) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--cor-texto);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+            overflow-x: hidden; 
+        }
+
+        .chuva-coracoes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; 
+            z-index: 9999; 
+            overflow: hidden;
+        }
+
+        .coracao {
+            position: absolute;
+            top: -10%;
+            color: #d66b7c; 
+            font-size: 20px;
+            opacity: 0;
+            animation: cair linear infinite;
+        }
+
+        @keyframes cair {
+            0% { 
+                transform: translateY(0) translateX(0) rotate(0deg); 
+                opacity: 0.8; 
+            }
+            100% { 
+                transform: translateY(110vh) translateX(30px) rotate(360deg); 
+                opacity: 0; 
+            }
+        }
+
+        .carta {
+            background-color: var(--cor-carta);
+            width: 100%;
+            max-width: 550px;
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 15px 35px var(--cor-sombra), 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 10;
+            border: 1px solid var(--cor-borda);
+        }
+
+        .carta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #a72a44, #d66b7c);
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--cor-titulo);
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+
+        .data-especial {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #8a7373;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--cor-borda);
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--cor-titulo);
+            font-size: 2.2rem;
+            text-align: center;
+            margin: 30px 0 15px;
+        }
+
+        .moldura-foto {
+            background: white;
+            padding: 10px 10px 25px 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transform: rotate(-2deg);
+            transition: transform 0.3s ease;
+            margin: 0 auto 10px;
+            max-width: 320px;
+        }
+
+        .moldura-foto:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .foto-casal {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            border: 1px solid #eee;
+        }
+
+        .legenda-polaroid {
+            font-family: 'Dancing Script', cursive;
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--cor-texto);
+            margin-top: 15px;
+        }
+
+        .contador-container {
+            background-color: #fff9f9;
+            border: 1px dashed var(--cor-borda);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        #contador {
+            font-size: 1.1rem;
+            color: var(--cor-titulo);
+            font-weight: 600;
+        }
+
+        .destaque-anos {
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .area-musica {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--cor-borda);
+        }
+
+        audio {
+            width: 100%;
+            max-width: 300px;
+            height: 40px;
+            margin-top: 10px;
+        }
+
+        audio::-webkit-media-controls-panel { background-color: #fff0f3; }
+        audio::-webkit-media-controls-play-button,
+        audio::-webkit-media-controls-mute-button { background-color: #fce4e8; border-radius: 50%; }
+
+        .texto-carta {
+            font-size: 1.05rem;
+            text-align: justify;
+            margin-top: 20px;
+            position: relative;
+            padding: 0 10px;
+        }
+
+        .texto-carta p { margin-bottom: 15px; }
+        
+        .assinatura {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            text-align: right;
+            color: var(--cor-titulo);
+            margin-top: 20px;
+        }
+
+        @media (max-width: 400px) {
+            h1 { font-size: 2.8rem; }
+            .carta { padding: 30px 20px; }
+            .foto-casal { height: 280px; }
+            .texto-carta { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chuva-coracoes" id="chuva"></div>
+
+    <main class="carta">
+        
+        <!-- CABEÇALHO -->
+        <h1>Kelvin & Natiely</h1>
+        <div class="data-especial">Desde 27 de Setembro de 2024</div>
+
+        <!-- 1. FOTO E LEGENDA -->
+        <div class="moldura-foto">
+            <img src="nossa-foto.jpg" alt="Nossa Foto" class="foto-casal">
+            <p class="legenda-polaroid">Nosso amor em cada detalhe...</p>
+        </div>
+
+        <!-- 2. CONTADOR (Movido para ficar debaixo da foto) -->
+        <h2>Nosso Tempo</h2>
+        <div class="contador-container">
+            <div id="contador">Calculando cada segundo com você...</div>
+        </div>
+
+        <!-- 3. CARTA DE DECLARAÇÃO -->
+        <div class="texto-carta">
+            <p><strong>Minha linda Natiely,</strong></p>
+            <p>
+                Ainda lembro do frio na barriga do nosso primeiro encontro e de como o tempo pareceu parar quando os nossos olhos se encontraram. Hoje, olho para trás e vejo que cada segundo que passamos juntos valeu a pena.
+            </p>
+            <p>
+                Criar essa página foi só um jeitinho que encontrei de guardar um pedacinho da nossa história. Quero que saiba que você é a minha melhor escolha, todos os dias. 
+            </p>
+            <p>
+                Feliz 2 anos de nós. Que venham muitos outros capítulos para essa nossa história de amor.
+            </p>
+            <div class="assinatura">
+                Com todo meu amor,<br>
+                Kelvin
+            </div>
+        </div>
+
+        <!-- 4. MÚSICA -->
+        <div class="area-musica">
+            <p style="font-style: italic; font-size: 0.9rem;">Nossa música tocando ao fundo</p>
+            <audio controls autoplay loop>
+                <source src="nossa-musica.mp3" type="audio/mpeg">
+                Seu navegador não suporta o player.
+            </audio>
+            <p style="font-size: 0.8rem; color: #888; margin-top: 5px;">Sonho De Todo Casal - Marcos & Belutti</p>
+        </div>
+
+    </main>
+
+    <!-- SCRIPT GERAL -->
+    <script>
+        // CHUVA DE CORAÇÕES
+        function criarCoracoes() {
+            const chuva = document.getElementById('chuva');
+            const quantidade = 30; 
+
+            for (let i = 0; i < quantidade; i++) {
+                let coracao = document.createElement('div');
+                coracao.innerHTML = '❤️'; 
+                coracao.classList.add('coracao');
+                
+                coracao.style.left = Math.random() * 100 + 'vw';
+                coracao.style.animationDuration = (Math.random() * 5 + 4) + 's';
+                coracao.style.animationDelay = (Math.random() * 5) + 's';
+                coracao.style.fontSize = (Math.random() * 15 + 10) + 'px';
+                
+                chuva.appendChild(coracao);
+            }
+        }
+        
+        criarCoracoes(); 
+
+        // CONTADOR
+        const dataInicio = new Date(2024, 8, 27, 0, 0, 0); 
+
+        function atualizarContador() {
+            const agora = new Date();
+            const diferenca = agora - dataInicio;
+
+            const diasTotais = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+            const minutos = Math.floor((diferenca / 1000 / 60) % 60);
+            const segundos = Math.floor((diferenca / 1000) % 60);
+
+            let anos = agora.getFullYear() - dataInicio.getFullYear();
+            let meses = agora.getMonth() - dataInicio.getMonth();
+            let dias = agora.getDate() - dataInicio.getDate();
+
+            if (dias < 0) {
+                meses--;
+                const ultimoDiaMesAnterior = new Date(agora.getFullYear(), agora.getMonth(), 0).getDate();
+                dias += ultimoDiaMesAnterior;
+            }
+
+            if (meses < 0) {
+                anos--;
+                meses += 12;
+            }
+
+            let textoContador = "";
+            
+            if (anos > 0) {
+                textoContador += `<span class="destaque-anos">${anos} ${anos === 1 ? 'ano' : 'anos'}!</span>`;
+            }
+
+            textoContador += `${meses} meses, ${dias} dias, <br>`;
+            textoContador += `${horas} horas, ${minutos} min e ${segundos} seg.`;
+
+            document.getElementById('contador').innerHTML = textoContador;
+        }
+
+        setInterval(atualizarContador, 1000);
+        atualizarContador(); 
+    </script>
+
+</body>
+</html>
